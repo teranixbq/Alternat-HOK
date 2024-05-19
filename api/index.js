@@ -8,15 +8,12 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
     const searchQuery = req.query.search;
-    const id = req.params.id;
     
     let Url = process.env.API_URL;
 
     if (searchQuery) {
-        Url += `?search=${searchQuery}`;
-    } else if (id) {
-        Url += id;
-    }
+        Url += `/?search=${searchQuery}`;
+    } 
 
     try {
         const response = await axios.get(Url);
